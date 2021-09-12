@@ -1,0 +1,29 @@
+Terraform Variable Types:
+- String
+  - varaible "a-string"{
+    type = string
+  }
+- Number
+  - variable "this-is-a-number" {
+    type=number
+  }
+- Bool
+  - variable "true-or-false" {
+    type = bool
+  }
+
+
+Terraform complex types:
+- List(type)
+  - [0,1,5,2]
+- Set(type)
+    - like a list, but it doesn't keep the order you put it in, and can only conatin unqiue values
+    - a list that has [5, 1, 1, 2] becomes [1, 2, 5] in a set (when you output it, terraform will sort it)
+- Map(type)
+  - {"key" = "value"}
+- Object({<ATTR NAME> = <TYPE>, ...})
+  - map but each element can have a diff type. (think dictionary in python)
+- Tubple([<TYPE>, ...])
+  - a tuple is a list, but each element can have a diff type. immutable
+
+NOTE: terraform can decide on the type
