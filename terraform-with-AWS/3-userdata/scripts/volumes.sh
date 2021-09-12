@@ -1,11 +1,11 @@
 #!/bin/bash
 
-set -ex 
+set -ex
 
-vgchange -ay
+vgchange -ay  # refresh lvm state
 
 DEVICE_FS=`blkid -o value -s TYPE ${DEVICE} || echo ""`
-if [ "`echo -n $DEVICE_FS`" == "" ] ; then 
+if [ "`echo -n $DEVICE_FS`" == "" ] ; then
   # wait for the device to be attached
   DEVICENAME=`echo "${DEVICE}" | awk -F '/' '{print $3}'`
   DEVICEEXISTS=''
