@@ -1,13 +1,15 @@
+# route 53 zone with Domain newtech.academy
 resource "aws_route53_zone" "newtech-academy" {
   name = "newtech.academy"
 }
 
+# A records are for resolving to IP address
 resource "aws_route53_record" "server1-record" {
   zone_id = aws_route53_zone.newtech-academy.zone_id
   name    = "server1.newtech.academy"
   type    = "A"
   ttl     = "300"
-  records = ["104.236.247.8"]
+  records = ["104.x.x.x"]
 }
 
 resource "aws_route53_record" "www-record" {
@@ -15,9 +17,10 @@ resource "aws_route53_record" "www-record" {
   name    = "www.newtech.academy"
   type    = "A"
   ttl     = "300"
-  records = ["104.236.247.8"]
+  records = ["104.x.x.x"]
 }
 
+# MX records are for email, use domain name with google apps
 resource "aws_route53_record" "mail1-record" {
   zone_id = aws_route53_zone.newtech-academy.zone_id
   name    = "newtech.academy"
@@ -32,7 +35,7 @@ resource "aws_route53_record" "mail1-record" {
   ]
 }
 
+# shows what name_servers we will use on domain name
 output "ns-servers" {
   value = aws_route53_zone.newtech-academy.name_servers
 }
-
