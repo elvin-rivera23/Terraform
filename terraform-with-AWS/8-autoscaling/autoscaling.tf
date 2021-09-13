@@ -1,3 +1,4 @@
+# launch config is important for autoscaling
 resource "aws_launch_configuration" "example-launchconfig" {
   name_prefix     = "example-launchconfig"
   image_id        = var.AMIS[var.AWS_REGION]
@@ -22,4 +23,3 @@ resource "aws_autoscaling_group" "example-autoscaling" {
     propagate_at_launch = true
   }
 }
-
